@@ -2,7 +2,7 @@
 
 import reduxListReducer from '../reducer';
 import getActionCreators from '../getActionCreators';
-import { ITEM_1, ITEM_2, TODOS_NAMESPACE } from '../mocks';
+import { ITEM_1, ITEM_2, TODOS_NAMESPACE } from '../__mocks__';
 
 const state = {};
 

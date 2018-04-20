@@ -1,7 +1,7 @@
 /* eslint-env jest */
 
 import { selectorsFactory } from '../selectorsFactory';
-import { TODOS_NAMESPACE } from '../mocks/index';
+import { TODOS_NAMESPACE } from '../__mocks__/index';
 
 describe('selectorsFactory', () => {
     it('should generate some selectors and factories', () => {

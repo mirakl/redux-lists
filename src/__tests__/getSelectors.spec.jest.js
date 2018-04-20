@@ -22,7 +22,9 @@ describe('getSelectors', () => {
 
         expect(listSelector(state, 'ALL')).toBe(listSelector(state, 'ALL'));
         expect(listSelector(state, 'DONE')).toBe(listSelector(state, 'DONE'));
-        expect(byKeySelector(state, ITEM_1.id)).toBe(byKeySelector(state, ITEM_1.id));
+        expect(byKeySelector(state, ITEM_1.id)).toBe(
+            byKeySelector(state, ITEM_1.id)
+        );
     });
 
     it('should not break without namespace parameter', () => {

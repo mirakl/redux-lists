@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { TODOS_NAMESPACE, ITEM_1, ITEM_2, state } from '../mocks/index';
+import { TODOS_NAMESPACE, ITEM_1, ITEM_2, state } from '../__mocks__/index';
 import { selectorsFactory } from '../selectorsFactory';
 
 describe('mapSelector', () => {

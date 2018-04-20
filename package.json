@@ -8,14 +8,15 @@
   "scripts": {
     "test": "jest",
     "clean": "rimraf lib dist es",
-    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min && npm run build:es",
+    "build": "npm run build:commonjs && npm run build:umd && npm run build:umd:min && npm run build:es && npm run build:remove-mocks",
     "prepublish": "npm run clean && npm run test && npm run build",
     "posttest": "npm run lint",
     "lint": "eslint src test",
     "build:commonjs": "cross-env BABEL_ENV=commonjs babel src --out-dir lib --ignore __tests__",
     "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
     "build:umd": "cross-env BABEL_ENV=commonjs NODE_ENV=development webpack",
-    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack"
+    "build:umd:min": "cross-env BABEL_ENV=commonjs NODE_ENV=production webpack",
+    "build:remove-mocks": "rm -rf es/**/__mocks__ && rm -rf lib/**/__mocks__ && rm -rf es/__mocks__ && rm -rf lib/__mocks__"
   },
   "devDependencies": {
     "@mirakl/eslint-config-mirakl": "^7.0.1",

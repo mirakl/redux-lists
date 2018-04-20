@@ -1,6 +1,11 @@
 /* eslint-env jest */
 
-import { ITEM_1, ITEM_2, fullState as state, TODOS_NAMESPACE } from '../mocks';
+import {
+    ITEM_1,
+    ITEM_2,
+    fullState as state,
+    TODOS_NAMESPACE,
+} from '../__mocks__';
 import getSelectors from '../getSelectors';
 
 describe('getSelectors', () => {

@@ -1,6 +1,6 @@
 /* eslint-env jest */
 
-import { ITEM_1, ITEM_2, TODOS_NAMESPACE } from '../mocks';
+import { ITEM_1, ITEM_2, TODOS_NAMESPACE } from '../__mocks__';
 import getActionCreators from '../getActionCreators';
 import { SET_LIST, UPDATE_ITEMS } from '../actionTypeHelpers';
 

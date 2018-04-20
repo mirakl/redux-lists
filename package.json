@@ -4,5 +4,17 @@
   "description": "A collection organizer using lists and maps to manage data entities",
   "main": "index.js",
   "author": "mbeaudru <manuel.beaudru@mirakl.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "@mirakl/eslint-config-mirakl": "^7.0.1",
+    "babel-preset-latest": "^6.24.1",
+    "jest": "^22.4.3"
+  },
+  "dependencies": {
+    "lodash": "^4.17.5",
+    "reselect": "^3.0.1"
+  }
 }

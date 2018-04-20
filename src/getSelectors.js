@@ -11,7 +11,8 @@ const getSelectors = namespace => {
     return {
         listSelector: (state, listName) =>
             itemsByListNameSelectorFactory(listName)(subState(state)),
-        byKeySelector: (state, itemKey) => mapSelector(subState(state))[itemKey],
+        byKeySelector: (state, itemKey) =>
+            mapSelector(subState(state))[itemKey],
     };
 };
 

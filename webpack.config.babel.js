@@ -9,7 +9,7 @@ const plugins = [
     }),
 ];
 
-const filename = `redux-thunk${NODE_ENV === 'production' ? '.min' : ''}.js`;
+const filename = `redux-list${NODE_ENV === 'production' ? '.min' : ''}.js`;
 
 export default {
     mode: NODE_ENV,

@@ -195,3 +195,155 @@ When this request is fulfilled, we update the post already stored in redux in di
 
 The state-tree gets updated, the `mapStateToProps` function is called. Our `postByIdSelector` gets our post with the new information we just fetched and `PostPage` re-renders.
 
+### Redux state-tree sample
+
+To get a better grasp on what's happens with your objects when you set a redux-list or when you make an update, let's see a sample redux-list tree that could be produced in an application blog:
+
+```json
+{
+    "@@redux-list": {
+        "POSTS": {
+          "list": {
+            "ALL": ["post1", "post2", "post3"],
+            "NEW": ["post3"],
+            "AUTHOR=MANU": ["post1", "post2"],
+            "AUTHOR=TOTO": ["post3"]
+          },
+          "map": {
+            "post1": {
+              "id": "post1",
+              "label": "My first post !",
+              "description": "This is my first post",
+              "author": "MANU"
+            },
+            "post2": {
+              "id": "post2",
+              "label": "My second post !",
+              "description": "This is my second post",
+              "content": "Okay, this is my first post and it's about redux-list!",
+              "author": "MANU"
+            },
+            "post3": {
+              "id": "post3",
+              "label": "The third post",
+              "description": "It's the third post of the blog but my first!",
+              "author": "TOTO"
+            }
+          }
+        }
+    }
+}
+```
+
+Redux-list normalizes your array of objects into a map / list structure. This is pretty convenient because it avoids repetition of information, here the posts objects are in the map and their id used as a reference in the lists.
+
+#### Redux-list state-tree evolution
+
+Let's consider this state-tree:
+
+```json
+{
+    "@@redux-list": {
+        "POSTS": {
+          "list": {},
+          "map": {}
+        }
+    }
+}
+```
+
+And let's consider that `fetch('/posts')` returned those `posts`:
+
+```json
+[
+  {
+    "id": "post1",
+    "label": "My first post !",
+    "description": "This is my first post",
+    "author": "MANU"
+  },
+  {
+    "id": "post2",
+    "label": "My second post !",
+    "description": "This is my second post",
+    "author": "MANU"
+  },
+  {
+    "id": "post3",
+    "label": "The third post",
+    "description": "It's the third post of the blog but my first!",
+    "author": "TOTO"
+  }
+]
+```
+
+When we called `setPostList` in our `PostList` component
+
+```javascript
+this.props.setPostList(posts, 'ALL');
+```
+
+here is what happened to redux-list state tree:
+
+```json
+{
+    "@@redux-list": {
+        "POSTS": {
+          "list": {
+            "ALL": ["post1", "post2", "post3"]
+          },
+          "map": {
+            "post1": {
+              "id": "post1",
+              "label": "My first post !",
+              "description": "This is my first post",
+              "author": "MANU"
+            },
+            "post2": {
+              "id": "post2",
+              "label": "My second post !",
+              "description": "This is my second post",
+              "author": "MANU"
+            },
+            "post3": {
+              "id": "post3",
+              "label": "The third post",
+              "description": "It's the third post of the blog but my first!",
+              "author": "TOTO"
+            }
+          }
+        }
+    }
+}
+```
+
+## API
+
+### `getActionCreators(namespace, options)`
+
+- (*String*) `namespace`: A namespace for the map / lists of your model
+- (*Object*) `options`: supported options are:
+    * (*String*, default = 'id') `onKey`: The key used as reference for objects manipulations
+    
+`getActionCreators` returns an *Object* containing the keys:
+
+- (*Function*) `setList(items, listName)`: Adds items in the collection + places references in the list
+    * (*Array of objects*) `items`: Model objects to be placed in the list. Object must at least have an unique identifier (`id` or the one defined by the above `onKey`)
+    * (*String*) name of the list you want to place your objects in.
+
+- (*Function*) `updateItems(items)`: Upsert items in the collection
+    * (*Object* or *Array of objects*) `items`: Places the objects into the redux-list map
+    
+### `getSelectors(namespace)`
+
+- (*String*) `namespace`: A namespace for the map / lists of your model
+
+`getSelectors` returns an *Object* containing the keys:
+
+- (*Function*) `listSelector(state, listName)`: Returns an array of objects previously put in the list with this *listName*
+    * (*Object*) `state`: the entire redux state-tree
+    * (*String*) `listName`: the list you want to extract the objects from
+    
+- (*Function*) `byKeySelector(state, itemKey)`: Returns the object that have the `itemKey` key value (defined with `getActionCreators`)
+    * (*Object*) `state`: the entire redux state-tree
+    * (*String*) `itemKey`: the itemKey value of the object you want to read on the redux-list store.

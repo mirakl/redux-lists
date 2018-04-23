@@ -365,3 +365,5 @@ here is what happened to redux-lists state tree:
 - (*Function*) `byKeySelector(state, itemKey)`: Returns the object that have the `itemKey` key value (defined with `getActionCreators`)
     * (*Object*) `state`: the entire redux state-tree
     * (*String*) `itemKey`: the itemKey value of the object you want to read on the redux-lists store.
+    
+> **Note :** The selectors are *memoized* so that if something has been processed / accessed once, it won't compute it again if it's asked another time with the same parameters.

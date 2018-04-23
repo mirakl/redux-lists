@@ -1,6 +1,6 @@
 # <img src="https://user-images.githubusercontent.com/32459740/39113251-64874c0c-46db-11e8-900d-7f2d8148a00b.png" />
 
-Redux list middleware is a tool to manage the models (like User, Post, Product for instance) in your application in an optimized and simple way.
+Redux lists middleware is a tool to manage the models (like User, Post, Product for instance) in your application in an optimized and simple way.
 
 ## Installation
 

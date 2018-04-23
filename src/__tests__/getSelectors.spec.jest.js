@@ -9,7 +9,7 @@ import {
 import getSelectors from '../getSelectors';
 
 describe('getSelectors', () => {
-    it('should create redux-list selectors with the right namespace', () => {
+    it('should create redux-lists selectors with the right namespace', () => {
         const { listSelector, byKeySelector } = getSelectors(TODOS_NAMESPACE);
 
         const allTodos = listSelector(state, 'ALL');

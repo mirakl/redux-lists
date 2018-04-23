@@ -1,5 +1,5 @@
 {
-  "name": "redux-list",
+  "name": "redux-lists",
   "version": "1.0.0",
   "description": "A collection organizer using lists and maps to manage data entities",
   "main": "index.js",

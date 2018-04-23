@@ -1,4 +1,4 @@
-const PREFIX = '@@redux-list';
+const PREFIX = '@@redux-lists';
 
 export const SET_LIST = (namespace, listName) =>
     `${PREFIX}/SET_LIST: ${listName} in ${namespace}`;

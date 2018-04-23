@@ -2,9 +2,27 @@
 
 Redux list middleware is a tool to manage the models (like User, Post, Product for instance) in your application in an optimized and simple way.
 
+## Installation
+
+`npm install --save redux-lists`
+
+The redux store should know how to handle actions coming from the redux-lists action creators. To enable this, we need to pass the redux-lists `reducer` to your store:
+
+```javascript
+import { createStore, combineReducers } from 'redux';
+import { reducer as reduxListsReducer } from 'redux-lists';
+
+const rootReducer = combineReducers({
+  // ...your other reducers here
+  reduxLists: reduxListsReducer
+});
+
+const store = createStore(rootReducer);
+```
+
 ## Motivations
 
-Redux-list is useful to:
+Redux-lists is useful to:
 
 - Factorize in a single place your models objects
 - Do optimistic updates and improve your app responsiveness very easily
@@ -20,20 +38,20 @@ In a blogging application, we probably will have... Posts ! Using redux, we will
 
 If you are used to redux, you probably already are thinking about how you are going to store those objects in the state-tree, the action creators and the selectors that you will have to make to get that data from the tree.
 
-### Redux-list in action
+### Redux-lists in action
 
-That's where redux-list is useful, because it provides you those tools and even more! Here is how it looks like:
+That's where redux-lists is useful, because it provides you those tools and even more! Here is how it looks like:
 
 *postActions.js*
 ```javascript
-import { getActionCreators } from 'redux-list';
+import { getActionCreators } from 'redux-lists';
 
 export const { setList: setPostList, updateItems: updatePosts } = getActionCreators('POSTS');
 ```
 
 *postSelectors.js*
 ```javascript
-import { getSelectors } from 'redux-list';
+import { getSelectors } from 'redux-lists';
 
 export const { listSelector: postsListSelector, byKeySelector: postByIdSelector } = getSelectors('POSTS');
 ```
@@ -161,13 +179,13 @@ A react component that fetches and renders a blog post page.
 
 #### postActions and postSelectors
 
-In `postActions`, we create the `setPostList` and `updatePosts` *redux-list* actions.
+In `postActions`, we create the `setPostList` and `updatePosts` *redux-lists* actions.
 
 `getActionCreators` takes two parameters, the first being the **namespace** and the second being an options object.
 
-Indeed, the model's objects (here the posts) are going to be stored in the state tree `@@redux-list/namespace` (here `@@redux-list/POSTS`).
+Indeed, the model's objects (here the posts) are going to be stored in the state tree `@@redux-lists/namespace` (here `@@redux-lists/POSTS`).
 
-Because of this, we also need to create the redux-list postSelectors in giving it the **namespace** they will have to look in: `getSelectors('POSTS')`.
+Because of this, we also need to create the redux-lists postSelectors in giving it the **namespace** they will have to look in: `getSelectors('POSTS')`.
 
 #### PostList workflow
 
@@ -197,11 +215,11 @@ The state-tree gets updated, the `mapStateToProps` function is called. Our `post
 
 ### Redux state-tree sample
 
-To get a better grasp on what's happens with your objects when you set a redux-list or when you make an update, let's see a sample redux-list tree that could be produced in an application blog:
+To get a better grasp on what's happens with your objects when you set a redux-lists or when you make an update, let's see a sample redux-lists tree that could be produced in an application blog:
 
 ```json
 {
-    "@@redux-list": {
+    "@@redux-lists": {
         "POSTS": {
           "list": {
             "ALL": ["post1", "post2", "post3"],
@@ -220,7 +238,7 @@ To get a better grasp on what's happens with your objects when you set a redux-l
               "id": "post2",
               "label": "My second post !",
               "description": "This is my second post",
-              "content": "Okay, this is my first post and it's about redux-list!",
+              "content": "Okay, this is my first post and it's about redux-lists!",
               "author": "MANU"
             },
             "post3": {
@@ -235,15 +253,15 @@ To get a better grasp on what's happens with your objects when you set a redux-l
 }
 ```
 
-Redux-list normalizes your array of objects into a map / list structure. This is pretty convenient because it avoids repetition of information, here the posts objects are in the map and their id used as a reference in the lists.
+Redux-lists normalizes your array of objects into a map / list structure. This is pretty convenient because it avoids repetition of information, here the posts objects are in the map and their id used as a reference in the lists.
 
-#### Redux-list state-tree evolution
+#### Redux-lists state-tree evolution
 
 Let's consider this state-tree:
 
 ```json
 {
-    "@@redux-list": {
+    "@@redux-lists": {
         "POSTS": {
           "list": {},
           "map": {}
@@ -283,11 +301,11 @@ When we called `setPostList` in our `PostList` component
 this.props.setPostList(posts, 'ALL');
 ```
 
-here is what happened to redux-list state tree:
+here is what happened to redux-lists state tree:
 
 ```json
 {
-    "@@redux-list": {
+    "@@redux-lists": {
         "POSTS": {
           "list": {
             "ALL": ["post1", "post2", "post3"]
@@ -332,7 +350,7 @@ here is what happened to redux-list state tree:
     * (*String*) name of the list you want to place your objects in.
 
 - (*Function*) `updateItems(items)`: Upsert items in the collection
-    * (*Object* or *Array of objects*) `items`: Places the objects into the redux-list map
+    * (*Object* or *Array of objects*) `items`: Places the objects into the redux-lists map
     
 ### `getSelectors(namespace)`
 
@@ -346,4 +364,4 @@ here is what happened to redux-list state tree:
     
 - (*Function*) `byKeySelector(state, itemKey)`: Returns the object that have the `itemKey` key value (defined with `getActionCreators`)
     * (*Object*) `state`: the entire redux state-tree
-    * (*String*) `itemKey`: the itemKey value of the object you want to read on the redux-list store.
+    * (*String*) `itemKey`: the itemKey value of the object you want to read on the redux-lists store.

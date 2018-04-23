@@ -6,7 +6,7 @@ import { ITEM_1, ITEM_2, TODOS_NAMESPACE } from '../__mocks__';
 
 const state = {};
 
-describe('Redux-list reducer', () => {
+describe('Redux-lists reducer', () => {
     it('should return state if no action type matches', () => {
         const updatedState = reduxListReducer(state, {});
         expect(updatedState).toEqual(state);

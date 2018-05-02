@@ -100,11 +100,11 @@ import { articlesListSelector } from './articleSelectors.js';
 
 class ArticleList extends React.Component {
     componentDidMount() {
-        fetch('/articles').then(response => {
-            response.json().then(articles => {
+        fetch('/articles')
+            .then(response => response.json())
+            .then(articles => {
                 this.props.setArticleList(articles, 'ALL');
             });
-        })
     }
     
     render() {
@@ -162,11 +162,11 @@ import { articleByIdSelector } from './articleSelectors.js';
 
 class ArticlePage extends React.Component {
     componentDidMount() {
-        fetch(`/articles/${this.props.id}`).then(response => {
-            response.json().then(article => {
+        fetch(`/articles/${this.props.id}`)
+            .then(response => response.json())
+            .then(article => {
                 this.props.updateArticles(article);
             });
-        })
     }
     
     render() {

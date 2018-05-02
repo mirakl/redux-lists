@@ -8,11 +8,11 @@ import { Link } from 'react-router-dom';
 
 class ArticleList extends React.Component {
     componentDidMount() {
-        fetch('http://localhost:3004/articles').then(response => {
-            response.json().then(articles => {
+        fetch('http://localhost:3004/articles')
+            .then(response => response.json())
+            .then(articles => {
                 this.props.setArticleList(articles, 'ALL');
             });
-        });
     }
 
     render() {
@@ -24,7 +24,9 @@ class ArticleList extends React.Component {
             <ul>
                 {articles.map(article => (
                     <li key={article.id}>
-                        <Link to={`/article/${article.id}`}>{article.title}</Link>
+                        <Link to={`/article/${article.id}`}>
+                            {article.title}
+                        </Link>
                         {article.description}
                     </li>
                 ))}

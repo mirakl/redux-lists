@@ -1,0 +1,9 @@
+{
+  "articles": [
+    { "id": "1", "title": "My first article", "author": "Manu" },
+    { "id": "2", "title": "My second article", "author": "Toto" },
+    { "id": "3", "title": "My third article", "author": "Manu" },
+    { "id": "4", "title": "My fourth article", "author": "Toto" }
+  ],
+  "profile": { "name": "Manu" }
+}

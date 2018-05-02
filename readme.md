@@ -86,7 +86,7 @@ export const { listSelector: articlesListSelector, byKeySelector: articleByIdSel
 
 Now, we want to write our ArticleList component. Here is the mechanism that we want to build here:
 
-![image](https://user-images.githubusercontent.com/32459740/39525819-64e03fee-4e1d-11e8-8990-20b9492c360c.png)
+![image](https://user-images.githubusercontent.com/32459740/39526911-7304083c-4e20-11e8-95c3-4c291bb33496.png)
 ![image](https://user-images.githubusercontent.com/32459740/39525833-6e292f70-4e1d-11e8-9e51-43a8914650c3.png)
 
 *ArticleList.js*
@@ -148,7 +148,7 @@ Here is a possible workflow for the ArticlePage component:
 
 > **Note :** We just performed an optimistic update ! Keep in mind that this behaviour is not mandatory to use with redux-list, but if you want to use such a mechanism redux-list makes it easy for you.
 
-![image](https://user-images.githubusercontent.com/32459740/39525991-d48a8ee4-4e1d-11e8-8c91-50d8fbc7729e.png)
+![image](https://user-images.githubusercontent.com/32459740/39527072-d67dfd28-4e20-11e8-9fa2-8692f1605bf0.png)
 ![image](https://user-images.githubusercontent.com/32459740/39526008-ddff05cc-4e1d-11e8-8ac4-e39ea9c85fda.png)
 
 *ArticlePage.js*

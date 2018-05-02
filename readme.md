@@ -49,9 +49,9 @@ Redux-lists is useful to:
 
 ## Concept in draw
 
-![image](https://user-images.githubusercontent.com/32459740/39522473-918822ec-4e12-11e8-836e-d22b46ee2e68.png)
-![image](https://user-images.githubusercontent.com/32459740/39522486-a580e130-4e12-11e8-9430-3b64ef11d099.png)
-![image](https://user-images.githubusercontent.com/32459740/39522500-b4a1a80c-4e12-11e8-9788-6267a0a5fb0c.png)
+![image](https://user-images.githubusercontent.com/32459740/39522690-48e933fe-4e13-11e8-8aa2-aaa3ccf43d7f.png)
+![image](https://user-images.githubusercontent.com/32459740/39522704-571ae6a2-4e13-11e8-901a-797f99ae2728.png)
+![image](https://user-images.githubusercontent.com/32459740/39522713-62250c94-4e13-11e8-9776-c4ffa8a9efbe.png)
 
 ## Case - a blog app
 

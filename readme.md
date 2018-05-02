@@ -51,7 +51,7 @@ Redux-lists is useful to:
 
 ![image](https://user-images.githubusercontent.com/32459740/39513076-5d25bd44-4df3-11e8-9e59-6bda523964f3.png)
 ![image](https://user-images.githubusercontent.com/32459740/39513045-438fbbd2-4df3-11e8-9d9a-471d53146831.png)
-![image](https://user-images.githubusercontent.com/32459740/39513096-73be9594-4df3-11e8-9c27-fd20b8804c43.png)
+![image](https://user-images.githubusercontent.com/32459740/39522353-39974c70-4e12-11e8-817b-5fdc226b70df.png)
 
 ## Case - a blog app
 

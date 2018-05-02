@@ -1,6 +1,6 @@
 # <img src="https://user-images.githubusercontent.com/32459740/39113251-64874c0c-46db-11e8-900d-7f2d8148a00b.png" />
 
-Redux lists middleware is a tool to manage the models (like User, Post, Product for instance) in your application in an optimized and simple way.
+Redux lists middleware is a tool to manage the models (like User, Article, Product for instance) in your application in an optimized and simple way.
 
 ## Installation
 
@@ -31,10 +31,10 @@ Redux-lists is useful to:
 
 ## Case - a blog app
 
-In a blogging application, we probably will have... Posts ! Using redux, we will want to do the following operations in our app:
+In a blogging application, we probably will have... Articles ! Using redux, we will want to do the following operations in our app:
 
-- Render a list of blog posts, with only their title and eventually a quick description
-- Render a single blog post, with all it's information
+- Render a list of blog articles, with only their title and eventually a quick description
+- Render a single blog article, with all it's information
 
 If you are used to redux, you probably already are thinking about how you are going to store those objects in the state-tree, the action creators and the selectors that you will have to make to get that data from the tree.
 
@@ -42,48 +42,48 @@ If you are used to redux, you probably already are thinking about how you are go
 
 That's where redux-lists is useful, because it provides you those tools and even more! Here is how it looks like:
 
-*postActions.js*
+*articleActions.js*
 ```javascript
 import { getActionCreators } from 'redux-lists';
 
-export const { setList: setPostList, updateItems: updatePosts } = getActionCreators('POSTS');
+export const { setList: setArticleList, updateItems: updateArticles } = getActionCreators('ARTICLES');
 ```
 
-*postSelectors.js*
+*articleSelectors.js*
 ```javascript
 import { getSelectors } from 'redux-lists';
 
-export const { listSelector: postsListSelector, byKeySelector: postByIdSelector } = getSelectors('POSTS');
+export const { listSelector: articlesListSelector, byKeySelector: particleByIdSelector } = getSelectors('ARTICLES');
 ```
 
-*PostList.js*
+*ArticleList.js*
 ```javascript
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { setPostList } from './postActions.js';
-import { postsListSelector } from './postSelectors.js';
+import { setArticleList } from './articleActions.js';
+import { articlesListSelector } from './articleSelectors.js';
 
-class PostList extends React.Component {
+class ArticleList extends React.Component {
     componentDidMount() {
-        fetch('/posts').then(response => {
-            const posts = response.json();
-            this.props.setPostList(posts, 'ALL');
+        fetch('/articles').then(response => {
+            const articles = response.json();
+            this.props.setArticleList(articles, 'ALL');
         })
     }
     
     render() {
-        const { posts } = this.props;
-        if (!posts) return 'Loading';
-        if (posts.length === 0) return 'No posts yet !';
+        const { articles } = this.props;
+        if (!articles) return 'Loading';
+        if (articles.length === 0) return 'No articles yet !';
         
         return (
             <ul>
-                {posts.map(post =>
-                    <li key={post.id}>
-                        {post.label}
-                        {post.description}
+                {articles.map(article =>
+                    <li key={article.id}>
+                        {article.label}
+                        {article.description}
                     </li>
                 )}
             </ul>
@@ -93,66 +93,66 @@ class PostList extends React.Component {
 
 function mapStateToProps(state) {
     return {
-        posts: postsListSelector(state, 'ALL')
+        articles: articlesListSelector(state, 'ALL')
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        setPostList: bindActionCreators(setPostList, dispatch)
+        setArticleList: bindActionCreators(setArticleList, dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostList);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
 ```
 
-*PostPage.js*
+*ArticlePage.js*
 ```javascript
 import React from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
-import { updatePosts } from './postActions.js';
-import { postByIdSelector } from './postSelectors.js';
+import { updateArticles } from './articleActions.js';
+import { articleByIdSelector } from './articleSelectors.js';
 
-class PostPage extends React.Component {
+class ArticlePage extends React.Component {
     componentDidMount() {
-        fetch(`/posts/${this.props.id}`).then(response => {
-            const post = response.json();
-            this.props.updatePosts(post);
+        fetch(`/articles/${this.props.id}`).then(response => {
+            const article = response.json();
+            this.props.updateArticles(article);
         })
     }
     
     render() {
-        const { post } = this.props;
-        if (!post) return 'Loading';
+        const { article } = this.props;
+        if (!article) return 'Loading';
         
         return (
             <article>
-                <h1>{post.label}</h1>
-                <h2>{post.author}</h2>
-                <h3>{post.createdAt}</h3>
+                <h1>{article.label}</h1>
+                <h2>{article.author}</h2>
+                <h3>{article.createdAt}</h3>
                 
-                <p>{post.content}</p>
+                <p>{article.content}</p>
             </article>
         )
     }
 }
 
 function mapStateToProps(state, ownProps) {
-    const postId = ownProps.id;
+    const articleId = ownProps.id;
     return {
-        post: postByIdSelector(state, postId)
+        article: articleByIdSelector(state, articleId)
     }
 }
 
 function mapDispatchToProps(dispatch) {
     return {
-        updatePosts: bindActionCreators(updatePosts, dispatch)
+        updateArticles: bindActionCreators(updateArticles, dispatch)
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(PostPage);
+export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage);
 ```
 
 ### Explanation
@@ -161,57 +161,57 @@ Let's take some time here to process and understand what is happening here.
 
 #### Files description
 
-- **postActions.js**
+- **articleActions.js**
 
 If you are familiar to redux, you know what this is. If you don't, you should learn how [redux](https://redux.js.org/) works first.
 
-- **postSelectors.js**
+- **articleSelectors.js**
 
 Contains functions (*memoized*) that go through the redux state-tree to get information in it.
 
-- **PostList.js**
+- **ArticleList.js**
 
-A react component that fetches and renders a list of posts.
+A react component that fetches and renders a list of articles.
 
-- **PostPage.js**
+- **ArticlePage.js**
 
-A react component that fetches and renders a blog post page.
+A react component that fetches and renders a blog article page.
 
-#### postActions and postSelectors
+#### articleActions and articleSelectors
 
-In `postActions`, we create the `setPostList` and `updatePosts` *redux-lists* actions.
+In `articleActions`, we create the `setArticleList` and `updateArticles` *redux-lists* actions.
 
 `getActionCreators` takes two parameters, the first being the **namespace** and the second being an options object.
 
-Indeed, the model's objects (here the posts) are going to be stored in the state tree `@@redux-lists/namespace` (here `@@redux-lists/POSTS`).
+Indeed, the model's objects (here the articles) are going to be stored in the state tree `@@redux-lists/namespace` (here `@@redux-lists/ARTICLES`).
 
-Because of this, we also need to create the redux-lists postSelectors in giving it the **namespace** they will have to look in: `getSelectors('POSTS')`.
+Because of this, we also need to create the redux-lists articleSelectors in giving it the **namespace** they will have to look in: `getSelectors('ARTICLES')`.
 
-#### PostList workflow
+#### ArticleList workflow
 
-When the `PostList` component is mounted, an AJAX request is performed to get the `posts` from the server.
+When the `ArticleList` component is mounted, an AJAX request is performed to get the `articles` from the server.
 
-When this request is fulfilled, we store those posts in a **list** called `'ALL'` in dispatching `setPostList` action.
+When this request is fulfilled, we store those articles in a **list** called `'ALL'` in dispatching `setArticleList` action.
 
-> Note: We will see how this list is structured in the redux state-tree right after, just keep in mind that we store the posts in a named list for now.
+> Note: We will see how this list is structured in the redux state-tree right after, just keep in mind that we store the articles in a named list for now.
 
-The state-tree gets updated, the `mapStateToProps` function is called. We use the `postsListSelector` to get the posts we stored in redux. `postsListSelector` takes the redux `state` and the `listName` we stored the posts in.
+The state-tree gets updated, the `mapStateToProps` function is called. We use the `articlesListSelector` to get the articles we stored in redux. `articlesListSelector` takes the redux `state` and the `listName` we stored the articles in.
 
-The posts are passed to our `PostList` and they are rendered in the UI.
+The articles are passed to our `ArticleList` and they are rendered in the UI.
 
-#### PostPage workflow
+#### ArticlePage workflow
 
-Firstly, let's consider that the user has previously rendered the previous `PostList` to access to the `PostPage`.
+Firstly, let's consider that the user has previously rendered the previous `ArticleList` to access to the `ArticlePage`.
 
-When the `PostPage` component is getting mounted, `mapStateToProps` function is called. Since we already have some information about the post in the redux store (label, quick description), the `postByIdSelector` finds them.
+When the `ArticlePage` component is getting mounted, `mapStateToProps` function is called. Since we already have some information about the article in the redux store (label, quick description), the `articleByIdSelector` finds them.
 
-It means that the PostPage can render instantly and prepare the user for the rest of the information to be fetched if you want to.
+It means that the ArticlePage can render instantly and prepare the user for the rest of the information to be fetched if you want to.
 
-When `PostPage` is mounted, an AJAX request is performed to get the `post` full information (it's content for instance).
+When `ArticlePage` is mounted, an AJAX request is performed to get the `article` full information (it's content for instance).
 
-When this request is fulfilled, we update the post already stored in redux in dispatching the `updatePosts` action.
+When this request is fulfilled, we update the article already stored in redux in dispatching the `updateArticles` action.
 
-The state-tree gets updated, the `mapStateToProps` function is called. Our `postByIdSelector` gets our post with the new information we just fetched and `PostPage` re-renders.
+The state-tree gets updated, the `mapStateToProps` function is called. Our `articleByIdSelector` gets our article with the new information we just fetched and `ArticlePage` re-renders.
 
 ### Redux state-tree sample
 
@@ -220,31 +220,31 @@ To get a better grasp on what's happens with your objects when you set a redux-l
 ```json
 {
     "@@redux-lists": {
-        "POSTS": {
+        "ARTICLES": {
           "list": {
-            "ALL": ["post1", "post2", "post3"],
-            "NEW": ["post3"],
-            "AUTHOR=MANU": ["post1", "post2"],
-            "AUTHOR=TOTO": ["post3"]
+            "ALL": ["article1", "article2", "article3"],
+            "NEW": ["article3"],
+            "AUTHOR=MANU": ["article1", "article2"],
+            "AUTHOR=TOTO": ["article3"]
           },
           "map": {
-            "post1": {
-              "id": "post1",
-              "label": "My first post !",
-              "description": "This is my first post",
+            "article1": {
+              "id": "article1",
+              "label": "My first article !",
+              "description": "This is my first article",
               "author": "MANU"
             },
-            "post2": {
-              "id": "post2",
-              "label": "My second post !",
-              "description": "This is my second post",
-              "content": "Okay, this is my first post and it's about redux-lists!",
+            "article2": {
+              "id": "article2",
+              "label": "My second article !",
+              "description": "This is my second article",
+              "content": "Okay, this is my first article and it's about redux-lists!",
               "author": "MANU"
             },
-            "post3": {
-              "id": "post3",
-              "label": "The third post",
-              "description": "It's the third post of the blog but my first!",
+            "article3": {
+              "id": "article3",
+              "label": "The third article",
+              "description": "It's the third article of the blog but my first!",
               "author": "TOTO"
             }
           }
@@ -253,7 +253,7 @@ To get a better grasp on what's happens with your objects when you set a redux-l
 }
 ```
 
-Redux-lists normalizes your array of objects into a map / list structure. This is pretty convenient because it avoids repetition of information, here the posts objects are in the map and their id used as a reference in the lists.
+Redux-lists normalizes your array of objects into a map / list structure. This is pretty convenient because it avoids repetition of information, here the articles objects are in the map and their id used as a reference in the lists.
 
 #### Redux-lists state-tree evolution
 
@@ -262,7 +262,7 @@ Let's consider this state-tree:
 ```json
 {
     "@@redux-lists": {
-        "POSTS": {
+        "ARTICLES": {
           "list": {},
           "map": {}
         }
@@ -270,35 +270,35 @@ Let's consider this state-tree:
 }
 ```
 
-And let's consider that `fetch('/posts')` returned those `posts`:
+And let's consider that `fetch('/articles')` returned those `articles`:
 
 ```json
 [
   {
-    "id": "post1",
-    "label": "My first post !",
-    "description": "This is my first post",
+    "id": "article1",
+    "label": "My first article !",
+    "description": "This is my first article",
     "author": "MANU"
   },
   {
-    "id": "post2",
-    "label": "My second post !",
-    "description": "This is my second post",
+    "id": "article2",
+    "label": "My second article !",
+    "description": "This is my second article",
     "author": "MANU"
   },
   {
-    "id": "post3",
-    "label": "The third post",
-    "description": "It's the third post of the blog but my first!",
+    "id": "article3",
+    "label": "The third article",
+    "description": "It's the third article of the blog but my first!",
     "author": "TOTO"
   }
 ]
 ```
 
-When we called `setPostList` in our `PostList` component
+When we called `setArticleList` in our `ArticleList` component
 
 ```javascript
-this.props.setPostList(posts, 'ALL');
+this.props.setArticleList(articles, 'ALL');
 ```
 
 here is what happened to redux-lists state tree:
@@ -306,27 +306,27 @@ here is what happened to redux-lists state tree:
 ```json
 {
     "@@redux-lists": {
-        "POSTS": {
+        "ARTICLES": {
           "list": {
-            "ALL": ["post1", "post2", "post3"]
+            "ALL": ["article1", "article2", "article3"]
           },
           "map": {
-            "post1": {
-              "id": "post1",
-              "label": "My first post !",
-              "description": "This is my first post",
+            "article1": {
+              "id": "article1",
+              "label": "My first article !",
+              "description": "This is my first article",
               "author": "MANU"
             },
-            "post2": {
-              "id": "post2",
-              "label": "My second post !",
-              "description": "This is my second post",
+            "article2": {
+              "id": "article2",
+              "label": "My second article !",
+              "description": "This is my second article",
               "author": "MANU"
             },
-            "post3": {
-              "id": "post3",
-              "label": "The third post",
-              "description": "It's the third post of the blog but my first!",
+            "article3": {
+              "id": "article3",
+              "label": "The third article",
+              "description": "It's the third article of the blog but my first!",
               "author": "TOTO"
             }
           }

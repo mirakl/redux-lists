@@ -49,7 +49,7 @@ Redux-lists is useful to:
 
 ## Concept in draw
 
-![image](https://user-images.githubusercontent.com/32459740/39522690-48e933fe-4e13-11e8-8aa2-aaa3ccf43d7f.png)
+![image](https://user-images.githubusercontent.com/32459740/39523774-0a7c01ce-4e17-11e8-8054-ca2e8ea465d1.png)
 ![image](https://user-images.githubusercontent.com/32459740/39522704-571ae6a2-4e13-11e8-901a-797f99ae2728.png)
 ![image](https://user-images.githubusercontent.com/32459740/39522713-62250c94-4e13-11e8-9776-c4ffa8a9efbe.png)
 

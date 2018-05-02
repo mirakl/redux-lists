@@ -44,7 +44,7 @@ Redux-lists is useful to:
 
 - Factorize in a single place your models objects
 - Do optimistic updates and improve your app responsiveness very easily
-- Reduce the redux boilerplate
+- Reduce the redux boilerplate: generates action creators + selectors to manage your model collections
 - Improve code consistency
 
 ## Concept in draw
@@ -64,7 +64,11 @@ If you are used to redux, you probably already are thinking about how you are go
 
 ### Redux-lists in action
 
-That's where redux-lists is useful, because it provides you those tools and even more! Here is how it looks like:
+That's where redux-lists is useful, because it provides you those tools and even more!
+
+For instance, in this case we want to manage a collection of articles. Redux-lists gives you action creators and selectors to manage those articles in your application.
+
+Firstly, we need to generate those tools by giving redux-list the namespace you want them to operate in:
 
 *articleActions.js*
 ```javascript
@@ -79,6 +83,11 @@ import { getSelectors } from 'redux-lists';
 
 export const { listSelector: articlesListSelector, byKeySelector: articleByIdSelector } = getSelectors('ARTICLES');
 ```
+
+Now, we want to write our ArticleList component. Here is the mechanism that we want to build here:
+
+![image](https://user-images.githubusercontent.com/32459740/39525819-64e03fee-4e1d-11e8-8990-20b9492c360c.png)
+![image](https://user-images.githubusercontent.com/32459740/39525833-6e292f70-4e1d-11e8-9e51-43a8914650c3.png)
 
 *ArticleList.js*
 ```javascript
@@ -131,6 +140,17 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(ArticleList);
 ```
 
+Now let's consider we clicked on an article item in the list because we want to access this article page.
+
+Here is a possible workflow for the ArticlePage component:
+
+![image](https://user-images.githubusercontent.com/32459740/39525972-c82e8894-4e1d-11e8-96c7-68e6321c534b.png)
+
+> **Note :** We just performed an optimistic update ! Keep in mind that this behaviour is not mandatory to use with redux-list, but if you want to use such a mechanism redux-list makes it easy for you.
+
+![image](https://user-images.githubusercontent.com/32459740/39525991-d48a8ee4-4e1d-11e8-8c91-50d8fbc7729e.png)
+![image](https://user-images.githubusercontent.com/32459740/39526008-ddff05cc-4e1d-11e8-8ac4-e39ea9c85fda.png)
+
 *ArticlePage.js*
 ```javascript
 import React from 'react';
@@ -181,7 +201,7 @@ function mapDispatchToProps(dispatch) {
 export default connect(mapStateToProps, mapDispatchToProps)(ArticlePage);
 ```
 
-### Explanation
+### Detailed explanations
 
 Let's take some time here to process and understand what is happening here.
 

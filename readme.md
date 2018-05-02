@@ -1,4 +1,4 @@
-# <img src="https://user-images.githubusercontent.com/32459740/39113251-64874c0c-46db-11e8-900d-7f2d8148a00b.png" />
+# <img src="https://user-images.githubusercontent.com/32459740/39515628-00b21758-4dfb-11e8-8861-c10862f9e343.png" />
 
 Redux lists middleware is a tool to manage the models (like User, Article, Product for instance) in your application in an optimized and simple way.
 

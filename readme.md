@@ -20,6 +20,24 @@ const rootReducer = combineReducers({
 const store = createStore(rootReducer);
 ```
 
+## Table of contents
+
+* [Motivations](#motivations)
+* [Concept in draw](#concept-in-draw)
+* [Case - a blog app](#case---a-blog-app)
++ [Redux-lists in action](#redux-lists-in-action)
++ [Explanation](#explanation)
+  - [Files description](#files-description)
+  - [articleActions and articleSelectors](#articleactions-and-articleselectors)
+  - [ArticleList workflow](#articlelist-workflow)
+  - [ArticlePage workflow](#articlepage-workflow)
++ [Redux state-tree sample](#redux-state-tree-sample)
+  - [Redux-lists state-tree evolution](#redux-lists-state-tree-evolution)
+* [API](#api)
+  + [`getActionCreators(namespace, options)`](#getactioncreatorsnamespace-options)
+  + [`getSelectors(namespace)`](#getselectorsnamespace)
+
+
 ## Motivations
 
 Redux-lists is useful to:

@@ -7,13 +7,11 @@ import PropTypes from 'prop-types';
 
 class ArticlePage extends React.Component {
     componentDidMount() {
-        fetch(`http://localhost:3004/articles/${this.props.id}`).then(
-            response => {
-                response.json().then(article => {
-                    this.props.updateArticles(article);
-                });
-            }
-        );
+        fetch(`http://localhost:3004/articles/${this.props.id}`)
+            .then(response => response.json())
+            .then(article => {
+                this.props.updateArticles(article);
+            });
     }
 
     render() {

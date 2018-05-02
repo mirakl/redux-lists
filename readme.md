@@ -59,7 +59,7 @@ export const { setList: setArticleList, updateItems: updateArticles } = getActio
 ```javascript
 import { getSelectors } from 'redux-lists';
 
-export const { listSelector: articlesListSelector, byKeySelector: particleByIdSelector } = getSelectors('ARTICLES');
+export const { listSelector: articlesListSelector, byKeySelector: articleByIdSelector } = getSelectors('ARTICLES');
 ```
 
 *ArticleList.js*
@@ -74,8 +74,9 @@ import { articlesListSelector } from './articleSelectors.js';
 class ArticleList extends React.Component {
     componentDidMount() {
         fetch('/articles').then(response => {
-            const articles = response.json();
-            this.props.setArticleList(articles, 'ALL');
+            response.json().then(articles => {
+                this.props.setArticleList(articles, 'ALL');
+            });
         })
     }
     
@@ -124,8 +125,9 @@ import { articleByIdSelector } from './articleSelectors.js';
 class ArticlePage extends React.Component {
     componentDidMount() {
         fetch(`/articles/${this.props.id}`).then(response => {
-            const article = response.json();
-            this.props.updateArticles(article);
+            response.json().then(article => {
+                this.props.updateArticles(article);
+            });
         })
     }
     

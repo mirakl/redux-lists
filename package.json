@@ -8,6 +8,7 @@
     "Manuel BEAUDRU <beaudru.manuel@gmail.com> (https://github.com/mbeaudru)",
     "Thomas BERTET <thomas.bertet@gmail.com> (https://github.com/thomasbertet)"
   ],
+  "repository": "github:mirakl/redux-lists",
   "files": [
     "es",
     "lib",

@@ -4,7 +4,10 @@
   "description": "A collection organizer using lists and maps to manage data entities",
   "main": "lib/index.js",
   "jsnext:main": "es/index.js",
-  "author": "mbeaudru <manuel.beaudru@mirakl.com>",
+  "authors": [
+    "Manuel BEAUDRU <beaudru.manuel@gmail.com> (https://github.com/mbeaudru)",
+    "Thomas BERTET <thomas.bertet@gmail.com> (https://github.com/thomasbertet)"
+  ],
   "license": "MIT",
   "scripts": {
     "test": "jest",

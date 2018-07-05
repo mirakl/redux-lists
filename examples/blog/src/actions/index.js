@@ -1,6 +1,6 @@
-import { getActionCreators } from 'redux-lists';
+import { getActionCreators } from 'redux-lists'
 
 export const {
-    setList: setArticleList,
-    updateItems: updateArticles,
-} = getActionCreators('ARTICLES');
+  setList: setArticleList,
+  updateItems: updateArticles
+} = getActionCreators('ARTICLES')

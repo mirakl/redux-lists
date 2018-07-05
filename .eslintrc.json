@@ -1,3 +1,9 @@
 {
-  "extends": ["@mirakl/eslint-config-mirakl"]
+  "extends": ["standard", "standard-react"],
+  "env": {
+    "browser": true
+  },
+  "parserOptions": {
+    "ecmaVersion": 8
+  }
 }

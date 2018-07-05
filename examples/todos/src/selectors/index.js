@@ -1,6 +1,6 @@
-import { getSelectors } from 'redux-lists';
+import { getSelectors } from 'redux-lists'
 
 export const {
-    listSelector: todoListSelector,
-    byKeySelector: todoByIdSelector,
-} = getSelectors('TODOS');
+  listSelector: todoListSelector,
+  byKeySelector: todoByIdSelector
+} = getSelectors('TODOS')

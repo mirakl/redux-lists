@@ -1,40 +1,40 @@
-import webpack from 'webpack';
-import path from 'path';
+import webpack from 'webpack'
+import path from 'path'
 
-const { NODE_ENV } = process.env;
+const { NODE_ENV } = process.env
 
 const plugins = [
-    new webpack.DefinePlugin({
-        'process.env.NODE_ENV': JSON.stringify(NODE_ENV),
-    }),
-];
+  new webpack.DefinePlugin({
+    'process.env.NODE_ENV': JSON.stringify(NODE_ENV)
+  })
+]
 
-const filename = `redux-list${NODE_ENV === 'production' ? '.min' : ''}.js`;
+const filename = `redux-list${NODE_ENV === 'production' ? '.min' : ''}.js`
 
 export default {
-    mode: NODE_ENV,
-    module: {
-        rules: [
-            {
-                test: /\.js$/,
-                loaders: ['babel-loader'],
-                exclude: /node_modules/,
-            },
-        ],
-    },
+  mode: NODE_ENV,
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        loaders: ['babel-loader'],
+        exclude: /node_modules/
+      }
+    ]
+  },
 
-    optimization: {
-        minimize: true,
-    },
+  optimization: {
+    minimize: true
+  },
 
-    entry: ['./src/index'],
+  entry: ['./src/index'],
 
-    output: {
-        path: path.join(__dirname, 'dist'),
-        filename,
-        library: 'ReduxList',
-        libraryTarget: 'umd',
-    },
+  output: {
+    path: path.join(__dirname, 'dist'),
+    filename,
+    library: 'ReduxList',
+    libraryTarget: 'umd'
+  },
 
-    plugins,
-};
+  plugins
+}

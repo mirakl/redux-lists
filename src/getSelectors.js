@@ -1,19 +1,19 @@
-import _get from 'lodash/get';
-import { selectorsFactory } from './selectorsFactory';
+import _get from 'lodash/get'
+import { selectorsFactory } from './selectorsFactory'
 
-const subState = state => _get(state, 'reduxList', {});
+const subState = state => _get(state, 'reduxList', {})
 
 const getSelectors = namespace => {
-    const { itemsByListNameSelectorFactory, mapSelector } = selectorsFactory(
-        namespace
-    );
+  const { itemsByListNameSelectorFactory, mapSelector } = selectorsFactory(
+    namespace
+  )
 
-    return {
-        listSelector: (state, listName) =>
-            itemsByListNameSelectorFactory(listName)(subState(state)),
-        byKeySelector: (state, itemKey) =>
-            mapSelector(subState(state))[itemKey],
-    };
-};
+  return {
+    listSelector: (state, listName) =>
+      itemsByListNameSelectorFactory(listName)(subState(state)),
+    byKeySelector: (state, itemKey) =>
+      mapSelector(subState(state))[itemKey]
+  }
+}
 
-export default getSelectors;
+export default getSelectors

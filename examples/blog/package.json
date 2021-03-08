@@ -15,7 +15,7 @@
     "react-router-dom": "^4.2.2",
     "redux": "^3.5.2",
     "redux-thunk": "^2.2.0",
-    "redux-lists": "1.0.0"
+    "redux-lists": "^1.0.0"
   },
   "scripts": {
     "start": "concurrently \"json-server --watch src/db.json --port 3004\" \"react-scripts start\"",

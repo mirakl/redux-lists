@@ -12,7 +12,7 @@
     "react-redux": "^5.0.7",
     "redux": "^3.5.2",
     "redux-thunk": "^2.2.0",
-    "redux-lists": "1.0.0"
+    "redux-lists": "^1.0.0"
   },
   "scripts": {
     "start": "react-scripts start",

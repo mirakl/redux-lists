@@ -5907,7 +5907,7 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
-redux-lists@1.0.0:
+redux-lists@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/redux-lists/-/redux-lists-1.0.0.tgz#cf8b8ef8e12a674374549b5bbc4d5f3171a5491d"
   integrity sha512-bkIhh7MZvuKNSlGfjJT/fAM8elCAz3B0A1ITReojeT+dVM8YseKt+9utnsFoY+2B+Lslsq4zG0VcBxkCi57GIQ==

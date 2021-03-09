@@ -5698,6 +5698,14 @@ reduce-function-call@^1.0.1:
   dependencies:
     balanced-match "^0.4.2"
 
+redux-lists@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/redux-lists/-/redux-lists-1.0.0.tgz#cf8b8ef8e12a674374549b5bbc4d5f3171a5491d"
+  integrity sha512-bkIhh7MZvuKNSlGfjJT/fAM8elCAz3B0A1ITReojeT+dVM8YseKt+9utnsFoY+2B+Lslsq4zG0VcBxkCi57GIQ==
+  dependencies:
+    lodash "^4.17.5"
+    reselect "^3.0.1"
+
 redux-thunk@^2.2.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.2.0.tgz#e615a16e16b47a19a515766133d1e3e99b7852e5"
@@ -5860,6 +5868,11 @@ require-uncached@^1.0.3:
 requires-port@1.0.x, requires-port@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/requires-port/-/requires-port-1.0.0.tgz#925d2601d39ac485e091cf0da5c6e694dc3dcaff"
+
+reselect@^3.0.1:
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/reselect/-/reselect-3.0.1.tgz#efdaa98ea7451324d092b2b2163a6a1d7a9a2147"
+  integrity sha1-79qpjqdFEyTQkrKyFjpqHXqaIUc=
 
 resolve-cwd@^2.0.0:
   version "2.0.0"
@@ -6755,8 +6768,9 @@ uri-js@^3.0.2:
     punycode "^2.1.0"
 
 urijs@^1.16.1:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.1.tgz#5b0ff530c0cbde8386f6342235ba5ca6e995d25a"
+  version "1.19.6"
+  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.6.tgz#51f8cb17ca16faefb20b9a31ac60f84aa2b7c870"
+  integrity sha512-eSXsXZ2jLvGWeLYlQA3Gh36BcjF+0amo92+wHPyN1mdR8Nxf75fuEuYTd9c0a+m/vhCjRK0ESlE9YNLW+E1VEw==
 
 urix@^0.1.0:
   version "0.1.0"

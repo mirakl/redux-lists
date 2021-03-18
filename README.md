@@ -1,3 +1,9 @@
+# STATUS : DEPRECATED AND UNMAINTAINED
+
+We recommend you to use another lib like [react-query](https://github.com/tannerlinsley/react-query), which also do client-side
+caching, without using redux, in a better way.
+
+
 # <img src="https://user-images.githubusercontent.com/32459740/39515628-00b21758-4dfb-11e8-8861-c10862f9e343.png" />
 
 Redux lists middleware is a tool to manage the models (like User, Article, Product for instance) in your application in an optimized and simple way.
